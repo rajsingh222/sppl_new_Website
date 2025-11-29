@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useMemo, useRef, useState, useCallback } from 'react';
 
 // Carousel with center-mode and infinite rotation by reordering items
 const Testimonials = () => {
@@ -26,14 +26,7 @@ const Testimonials = () => {
 	const trackRef = useRef(null);
 	const viewportRef = useRef(null);
 
-	// Autoplay
-		useEffect(() => {
-			if (isPaused) return;
-			timerRef.current = setInterval(() => {
-				next();
-			}, 3200); // slightly slower than 2.5s
-			return () => clearInterval(timerRef.current);
-		}, [isPaused, visibleCount]);
+
 
 	// Controls
 	const centerIndex = visibleCount === 3 ? 1 : 0;
@@ -42,7 +35,7 @@ const Testimonials = () => {
 		setActive(centerIndex);
 	}, [centerIndex]);
 
-	const scheduleRotate = (direction) => {
+	const scheduleRotate = useCallback((direction) => {
 		setIsAnimating(true);
 		window.setTimeout(() => {
 			setIsInstant(true);
@@ -61,13 +54,22 @@ const Testimonials = () => {
 				setIsAnimating(false);
 			});
 		}, 520); // slightly longer than CSS duration
-	};
+	}, [centerIndex]);
 
-	const next = () => {
+	const next = useCallback(() => {
 		if (isAnimating) return;
 		setActive(centerIndex + 1);
 		scheduleRotate('next');
-	};
+	}, [isAnimating, centerIndex, scheduleRotate]);
+
+	// Autoplay (placed after `next` so linter doesn't report use-before-define)
+	useEffect(() => {
+		if (isPaused) return;
+		timerRef.current = setInterval(() => {
+			next();
+		}, 3200);
+		return () => clearInterval(timerRef.current);
+	}, [isPaused, visibleCount, next]);
 
 	const prev = () => {
 		if (isAnimating) return;
@@ -185,7 +187,7 @@ const Testimonials = () => {
 													<div className="text-xs sm:text-sm text-gray-500">{t.role}</div>
 												</div>
 											</div>
-											<p className="text-gray-700 text-base sm:text-lg leading-relaxed">“{t.quote}”</p>
+											<p className="text-gray-700 text-base sm:text-lg leading-relaxed text-justify">“{t.quote}”</p>
 											<div className="mt-4 sm:mt-6 text-sm text-gray-500">— {t.name}</div>
 										</div>
 									</article>

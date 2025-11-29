@@ -3,12 +3,12 @@ import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
  
 
+const BG = process.env.PUBLIC_URL || '';
 const bgImages = [
-  '/solution/bridgesen.png',
-  '/solution/ab2.png',
-  
-  '/solution/ab4.png',
-  '/solution/ab6.png'
+  `${BG}/solution/bridgesen.png`,
+  `${BG}/solution/ab2.png`,
+  `${BG}/solution/ab4.png`,
+  `${BG}/solution/ab6.png`,
 ]; // TODO: replace with bridge specific images e.g. /solution/bridge-1.jpg
 
 export default function Bridges() {

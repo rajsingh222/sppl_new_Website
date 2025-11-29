@@ -30,9 +30,9 @@ export default function AboutPage() {
                 </div>
                 <h2 className="text-2xl md:text-3xl font-bold text-sppl-blue">Who We Are</h2>
                 <div className="mt-2 h-1 w-24 rounded-full bg-gradient-to-r from-sppl-blue via-sky-500 to-sppl-dark-blue" />
-                <div className="mt-4 space-y-4 text-gray-800 leading-relaxed">
+                <div className="mt-4 space-y-4 text-gray-800 leading-relaxed text-justify">
                   <p>
-                    At Sanrachna Prahari Pvt Ltd. (SPPL), we are redefining the future of Structural Health Monitoring (SHM) in India. Incubated at the Foundation for Innovation & Technology Transfer (FITT), IIT Delhi and guided by distinguished IIT Delhi faculty, SPPL combines academic excellence with industry expertise to deliver indigenous, cutting-edge monitoring solutions.
+                    At Sanrachna Prahari Pvt Ltd (SPPL), we are redefining the future of Structural Health Monitoring (SHM) in India. Incubated at the Foundation for Innovation & Technology Transfer (FITT), IIT Delhi and guided by distinguished IIT Delhi faculty, SPPL combines academic excellence with industry expertise to deliver indigenous, cutting-edge monitoring solutions.
                   </p>
                   <p>
                     Our mission is simple yet transformative: to safeguard and extend the life of critical civil infrastructure—from high-rise buildings and heritage monuments to bridges, tunnels, industrial plants and transportation networks—through innovation, research and expert training.

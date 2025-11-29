@@ -1,14 +1,16 @@
 import React from 'react';
 import Footer from '../components/Footer';
+import MetaTags from '../components/MetaTags';
 
 const BlogCard = ({ image, author, date, title, excerpt, link, containerClass = '' }) => (
   <div className={`group bg-white/90 rounded-xl shadow-[0_2px_16px_-4px_rgba(36,54,80,0.10)] overflow-hidden transition-all duration-300 hover:shadow-[0_6px_32px_-6px_rgba(36,54,80,0.16)] hover:-translate-y-1.5 flex flex-col h-full ${containerClass}`} style={{ fontFamily: 'Poppins, Segoe UI, sans-serif' }}>
-    <div className="relative overflow-hidden">
+    <div className="overflow-hidden rounded-t-xl bg-gray-50 h-44 md:h-52 lg:h-56 p-3 md:p-4 flex items-center justify-center">
       <img
         src={image}
         alt={title}
-        className="w-full aspect-[16/9] object-cover transition-transform duration-300 group-hover:scale-105"
-        style={{ borderRadius: '0.75rem 0.75rem 0 0', minHeight: '180px', maxHeight: '220px' }}
+        loading="lazy"
+        decoding="async"
+        className="w-full h-full object-contain object-center transition-all duration-300"
       />
     </div>
     <div className="p-5 md:p-6 flex flex-col flex-1">
@@ -42,6 +44,43 @@ const BlogCard = ({ image, author, date, title, excerpt, link, containerClass = 
 
 const Blogs = () => {
   const posts = [
+    // Newly added posts (placed above existing posts)
+   
+    {
+      image: '/blog/10.png',
+      author: 'Col Rohit Gogna',
+      date: '08 Nov, 2025',
+      title: 'AI and Computational Tools: Future of Civil Engineering',
+      excerpt: 'Civil Engineering now moves into an intelligent era powered by AI, ML, Python and MATLAB in design, monitoring and maintenance. AI-driven SHM provides the capability for real-time damage detection and predictive maintenance, replacing slow and time-consuming manual inspections.',
+      link: 'https://www.linkedin.com/posts/sanrachna-prahari-pvt-ltd_aiincivilengineering-smartinfrastructure-activity-7392789852309712896-ezE1?utm_source=share&utm_medium=member_desktop&rcm=ACoAACJs-_EBvXGRIUZMHKul-E5nGBMaOUsvG1c'
+    },
+    {
+      image: '/blog/9.png',
+      author: 'Col Rohit Gogna',
+      date: '01 Nov, 2025',
+      title: 'Congratulations to Prof. Suresh Bhalla on being elected as Fellow of INAE',
+      excerpt: 'This is an exceptional achievement recognised by academia and industry alike. Prof. Bhalla, is widely recognised for his groundbreaking contributions to the field of civil and structural engineering',
+      link: 'https://www.linkedin.com/posts/sanrachna-prahari-pvt-ltd_inae-iitdelhi-structuralhealthmonitoring-activity-7389168294920007682-_nRR?utm_source=share&utm_medium=member_desktop&rcm=ACoAACJs-_EBvXGRIUZMHKul-E5nGBMaOUsvG1c'
+    },
+    {
+      image: '/blog/8.png',
+      author: 'Col Rohit Gogna',
+      date: '23 Oct, 2025',
+      title: 'MOU Signing between SPPL and Solinor Teknologi AS',
+
+      excerpt: 'We are delighted to announce the signing of a Memorandum of Understanding (MoU) on 23rd October 2025 between Sanrachna Prahari Pvt Ltd (SPPL), an IIT Delhi-incubated company pioneering in Advanced Structural Health Monitoring (SHM), represented by CEO Col Rohit Gogna and Solinor Teknologi AS, based in Norway, represented by MD & Chairman Prof. Harpal Singh.',
+      link: 'https://www.linkedin.com/posts/sanrachna-prahari-pvt-ltd_sanrachnaprahari-solinor-ishms-activity-7388170978918424576-pogm?utm_source=share&utm_medium=member_desktop&rcm=ACoAACJs-_EBvXGRIUZMHKul-E5nGBMaOUsvG1c'
+    },
+    {
+      image: '/blog/7.png',
+      author: 'Col Rohit Gogna',
+      date: '08 Oct, 2025',
+      title: 'Industry Collaborative Workshop, Organised by (ISHMS)',
+      excerpt:'It was an honour for Sanrachna Prahari Pvt Ltd (SPPL) to have sponsored the second industry collaborative workshop, organised by the Indian Structural Health Monitoring Society (ISHMS), with distinguished Prof. Achintya Haldar, University of Arizona and Suresh Bhalla, Indian Institute of Technology, Delhi.',
+      link: 'https://www.linkedin.com/posts/sanrachna-prahari-pvt-ltd_ai-iot-makeinindia-activity-7378307825946705921-f5nf?utm_source=share&utm_medium=member_desktop&rcm=ACoAACJs-_EBvXGRIUZMHKul-E5nGBMaOUsvG1c'
+    },
+
+    // Original posts
     {
       image: '/blog/1.jpg',
       author: 'Col Rohit Gogna',
@@ -83,7 +122,7 @@ const Blogs = () => {
       link: 'https://www.linkedin.com/feed/update/urn:li:activity:7255203643715395584/?actorCompanyId=104458075'
     },
     {
-  image: '/blog/6.png',
+      image: '/blog/6.png',
       author: 'Col Rohit Gogna',
       date: '27 Dec, 2024',
       title: 'Event Participations',
@@ -94,6 +133,11 @@ const Blogs = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-sky-100">
+      <MetaTags
+        title="Blogs — SPPL India"
+        description="Insights and updates from SPPL India on Structural Health Monitoring, AI for SHM, workshops and industry collaborations."
+        url={(typeof window !== 'undefined' ? window.location.href : 'https://spplindia.org/blogs')}
+      />
       {/* Hero */}
       <div className="text-center py-14 md:py-16 bg-gradient-to-r from-sppl-blue/95 to-sppl-dark-blue/95 text-white shadow-[0_2px_16px_-4px_rgba(36,54,80,0.10)]">
         <div className="max-w-3xl mx-auto px-6">

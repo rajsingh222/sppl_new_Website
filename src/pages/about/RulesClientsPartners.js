@@ -19,12 +19,12 @@ export default function RulesClientsPartners() {
         </div>
 
         {/* Content */}
-        <section className="py-16">
+        <section className="py-16 text-justify">
           <div className="max-w-5xl mx-auto px-6 text-gray-800">
             <div className="bg-white/70 backdrop-blur-sm shadow-sm rounded-2xl p-6 md:p-10">
               <div className="prose max-w-none prose-slate">
-                <p className="text-gray-700 leading-relaxed">
-                  Sanrachna Prahari Pvt Ltd. (SPPL) is committed to transparent, professional and mutually beneficial partnerships. To ensure smooth collaboration and uphold the highest standards of integrity, all clients, contractors, suppliers, consultants and partners are expected to follow these rules:
+                <p className="text-gray-700 leading-relaxed text-justify">
+                  Sanrachna Prahari Pvt Ltd (SPPL) is committed to transparent, professional and mutually beneficial partnerships. To ensure smooth collaboration and uphold the highest standards of integrity, all clients, contractors, suppliers, consultants and partners are expected to follow these rules:
                 </p>
 
                 <div className="mt-8 space-y-6">
@@ -38,7 +38,7 @@ export default function RulesClientsPartners() {
                     </div>
                     <div>
                       <h3 className="text-xl font-semibold text-gray-900">Compliance with Laws and Standards</h3>
-                      <p className="mt-2 text-gray-700">All parties must adhere to applicable local, national and international laws. This includes obtaining necessary permits, following building codes and complying with safety, structural and environmental regulations. Intellectual property rights and NDAs must always be respected.</p>
+                      <p className="mt-2 text-gray-700 text-justify">All parties must adhere to applicable local, national and international laws. This includes obtaining necessary permits, following building codes and complying with safety, structural and environmental regulations. Intellectual property rights and NDAs must always be respected.</p>
                     </div>
                   </div>
 
@@ -51,7 +51,7 @@ export default function RulesClientsPartners() {
                     </div>
                     <div>
                       <h3 className="text-xl font-semibold text-gray-900">Ethical Business Practices</h3>
-                      <p className="mt-2 text-gray-700">We expect complete honesty and integrity in all dealings. Partners must avoid corruption, bribery or misrepresentation, and disclose any conflicts of interest before entering agreements.</p>
+                      <p className="mt-2 text-gray-700 text-justify">We expect complete honesty and integrity in all dealings. Partners must avoid corruption, bribery or misrepresentation, and disclose any conflicts of interest before entering agreements.</p>
                     </div>
                   </div>
 

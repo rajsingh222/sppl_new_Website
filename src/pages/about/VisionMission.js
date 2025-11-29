@@ -20,10 +20,10 @@ export default function VisionMission() {
         <section className="py-12 md:py-16">
           <div className="max-w-5xl mx-auto px-6 space-y-8">
             <div className="bg-white/90 backdrop-blur rounded-2xl border border-gray-200 shadow-sm p-6 md:p-8">
-              <h2 className="text-2xl md:text-3xl font-bold text-sppl-blue">At Sanrachna Prahari Pvt. Ltd.</h2>
+              <h2 className="text-2xl md:text-3xl font-bold text-sppl-blue">At Sanrachna Prahari Pvt Ltd</h2>
               <div className="mt-2 h-1 w-24 rounded-full bg-gradient-to-r from-sppl-blue via-sky-500 to-sppl-dark-blue" />
-              <p className="mt-4 text-gray-800 leading-relaxed">
-                At Sanrachna Prahari Pvt Ltd., we believe in safeguarding India’s civil infrastructure through innovation, research and technology. Our vision, mission and aim reflect our unwavering commitment to safety, sustainability and excellence in Structural Health Monitoring (SHM).
+              <p className="mt-4 text-gray-800 leading-relaxed text-justify">
+                At Sanrachna Prahari Pvt Ltd, we believe in safeguarding India’s civil infrastructure through innovation, research and technology. Our vision, mission and aim reflect our unwavering commitment to safety, sustainability and excellence in Structural Health Monitoring (SHM).
               </p>
             </div>
 
@@ -31,19 +31,19 @@ export default function VisionMission() {
               <div className="h-full bg-white/90 backdrop-blur rounded-2xl border border-gray-200 shadow-sm p-6 md:p-8">
                 <div className="flex items-center gap-3 mb-3">
                   <span className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gradient-to-br from-sppl-blue to-sppl-dark-blue text-white shadow-md">👁️</span>
-                  <h3 className="text-xl md:text-2xl font-bold text-gray-900">Vision Statement</h3>
+                  <h3 className="text-xl md:text-2xl font-bold text-gray-900">Our Vision</h3>
                 </div>
                 <blockquote className="text-gray-800 leading-relaxed italic">
-                  “Ensuring safety, longevity and sustainability of infrastructure through cutting-edge technology, innovative research and world-class services in Structural Health Monitoring.”
+                  "To ensure safety, longevity and sustainability of infrastructure through cutting-edge technology, innovative research and world-class services in Structural Health Monitoring."
                 </blockquote>
               </div>
               <div className="h-full bg-white/90 backdrop-blur rounded-2xl border border-gray-200 shadow-sm p-6 md:p-8">
                 <div className="flex items-center gap-3 mb-3">
                   <span className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gradient-to-br from-sppl-blue to-sppl-dark-blue text-white shadow-md">🎯</span>
-                  <h3 className="text-xl md:text-2xl font-bold text-gray-900">Mission Statement</h3>
+                  <h3 className="text-xl md:text-2xl font-bold text-gray-900">Our Mission</h3>
                 </div>
-                <blockquote className="text-gray-800 leading-relaxed italic">
-                  “To deliver advanced Structural Health Monitoring solutions using IoT-based, artificial neural network–supported sensor technology, empowering the nation to protect and enhance the safety and performance of infrastructure through expert consultation and uncompromising commitment to quality.”
+                <blockquote className="text-gray-800 leading-relaxed italic text-justify">
+                  “To deliver advanced Structural Health Monitoring solutions using cutting-edge, IoT and AI-driven, sensor technologies through reliable, scalable and cost-effective systems for infrastructure management.”
                 </blockquote>
               </div>
             </div>
@@ -54,7 +54,7 @@ export default function VisionMission() {
                 <h3 className="text-xl md:text-2xl font-bold text-gray-900">Our Aim</h3>
               </div>
               <p className="text-gray-800 leading-relaxed">
-                “To revolutionize the way infrastructure is monitored, maintained and managed, ensuring resilience and sustainability for generations to come.”
+                "To revolutionize infrastructure management by providing real-time, intelligent and sustainable Structural Health Monitoring systems that ensure safety, reliability and long-term resilience."
               </p>
             </div>
           </div>

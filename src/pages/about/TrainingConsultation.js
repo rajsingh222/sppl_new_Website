@@ -25,13 +25,13 @@ export default function TrainingConsultation() {
               <div className="prose max-w-none prose-slate">
                 {/* Intro */}
                 <h2 className="text-2xl font-semibold text-gray-900">Building a Skilled SHM Workforce</h2>
-                <p className="mt-3 text-gray-700 leading-relaxed">
+                <p className="mt-3 text-gray-700 leading-relaxed text-justify">
                   Sanrachna Prahari is committed to developing a trained workforce in structural health monitoring (SHM) to meet India’s growing infrastructure needs. Through specialized training and expert consultation, we equip engineers, contractors and industry professionals with practical skills in SHM technologies, methods and best practices. Our initiative also supports national programs such as the Skill India Mission, ensuring that the country is ready for the future of infrastructure management.
                 </p>
 
                 {/* Why Training */}
                 <h2 className="mt-10 text-2xl font-semibold text-gray-900">Why SHM Training is Essential</h2>
-                <p className="mt-3 text-gray-700 leading-relaxed">
+                <p className="mt-3 text-gray-700 leading-relaxed text-justify">
                   India’s expanding infrastructure — from bridges, highways and tunnels to smart cities and industrial facilities — demands constant monitoring to ensure safety and longevity. A trained SHM workforce can:
                 </p>
                 <ul className="mt-3 list-disc pl-6 text-gray-700 space-y-2">
@@ -69,9 +69,9 @@ export default function TrainingConsultation() {
                 </ul>
 
                 {/* Impact */}
-                <div className="mt-10 border-l-4 border-sky-300 pl-4">
+                <div className="mt-10 border-l-4 border-sky-300 pl-4 ">
                   <h3 className="text-xl font-semibold text-gray-900">The Impact</h3>
-                  <p className="mt-2 text-gray-800">
+                  <p className="mt-2 text-gray-800 text-justify">
                     By combining training with expert consultation, SPPL is building a future-ready workforce capable of advancing SHM adoption across India. This initiative ensures safer, more resilient and longer-lasting infrastructure while creating opportunities for engineers and institutions to lead in this vital field.
                   </p>
                 </div>

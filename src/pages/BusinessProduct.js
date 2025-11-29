@@ -44,18 +44,18 @@ export default function BusinessProduct() {
         </section>
 
         {/* Content */}
-        <div className="max-w-7xl mx-auto px-6 py-12 space-y-12">
+        <div className="max-w-7xl mx-auto px-6 py-12 space-y-12 ">
           {/* Product Overview */}
           <section className="grid lg:grid-cols-2 gap-8 items-center">
             <div className="bg-white/80 backdrop-blur rounded-2xl border border-gray-200 p-8 shadow-sm">
               <h2 className="text-2xl md:text-3xl font-bold text-sppl-blue">Structural Health Monitoring (SHM) Sensors</h2>
-              <p className="mt-4 text-gray-800 leading-relaxed">
+              <p className="mt-4 text-gray-800 leading-relaxed text-justify">
                 Our SHM sensors are designed to measure structural responses such as stress, strain, vibration and environmental effects. They combine precision monitoring with energy-harvesting capabilities to enable long-term autonomous operation in bridges, buildings and industrial facilities.
               </p>
             </div>
             <div className="bg-white/80 backdrop-blur rounded-2xl border border-gray-200 p-8 shadow-sm">
               <h2 className="text-2xl md:text-3xl font-bold text-sppl-blue">Advanced SHM Sensors</h2>
-              <p className="mt-4 text-gray-800 leading-relaxed">
+              <p className="mt-4 text-gray-800 leading-relaxed text-justify">
                 SPPL provides indigenous sensors that monitor the health of critical infrastructure while harnessing energy from structural vibrations. Developed with IIT Delhi technology, our sensors deliver accurate, real-time insights for safer, smarter and more sustainable structures.
               </p>
             </div>
@@ -67,7 +67,7 @@ export default function BusinessProduct() {
               <h3 className="text-xl md:text-2xl font-bold text-gray-900">Key Features</h3>
               <div className="mt-3 mx-auto h-1 w-24 rounded-full bg-gradient-to-r from-sppl-blue via-sky-500 to-sppl-dark-blue" />
             </div>
-            <div className="grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 items-stretch gap-6">
+            <div className="grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 items-stretch gap-6 ">
               {features.map((f) => (
                 <div key={f.title} className="group h-full min-h-[220px] bg-white/90 backdrop-blur rounded-2xl border border-gray-200 p-6 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all transform flex flex-col">
                   <div className="mb-4">

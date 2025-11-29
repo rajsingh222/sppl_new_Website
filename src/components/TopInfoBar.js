@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const IconLocation = ({ className = 'h-4 w-4' }) => (
   <svg className={className + ' text-sppl-blue'} viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -41,6 +42,8 @@ const IconInstagram = ({ className = 'h-4 w-4' }) => (
 const INFO_BAR_HEIGHT_PX = 36; // matches h-9
 
 const TopInfoBar = ({ show }) => {
+  const navigate = useNavigate();
+  
   useEffect(() => {
     document.documentElement.style.setProperty(
       '--topbar-offset',
@@ -55,10 +58,27 @@ const TopInfoBar = ({ show }) => {
           <div className="flex items-center justify-between h-9 text-[13px] text-gray-900">
             <div className="flex items-center gap-4">
               <div className="flex items-center gap-2 font-medium"><IconLocation /><span>2-A-2A, Second Floor Research & Innovation Park IIT Delhi- 110016 India</span></div>
-              <div className="hidden md:flex items-center gap-2 font-medium"><IconPhone /><a href="tel:+917055559999" className="hover:text-sppl-blue">+91 70555 59999</a></div>
+              <div className="hidden md:flex items-center gap-2 font-medium"><IconPhone /><a href="tel:+917055559999" className="hover:text-sppl-blue">+91-9013933333</a></div>
               <div className="hidden sm:flex items-center gap-2 font-medium"><IconMail /><a href="mailto:ceo@spplindia.org" className="hover:text-sppl-blue">ceo@spplindia.org</a></div>
             </div>
             <div className="hidden sm:flex items-center gap-3">
+              {/* OSHM popup button - shows meaning on hover and opens modal on click */}
+              <div className="relative group">
+                <button
+                  onClick={() => navigate('/oshm')}
+                  aria-label="OSHM - Online Structural Health Monitoring"
+                  title="OSHM: Online Structural Health Monitoring"
+                  className="px-3 py-1 rounded-lg bg-yellow-50 text-yellow-800 font-semibold text-sm border border-yellow-100 hover:bg-yellow-100 transition-colors"
+                >
+                  OSHM
+                </button>
+                <div className="pointer-events-none absolute right-0 top-full mt-2 hidden group-hover:block w-max max-w-xs z-[110]">
+                  <div className="rounded-xl bg-white border border-gray-200 shadow-lg px-3 py-2 text-xs text-gray-800">
+                    <strong className="block text-sm">OSHM</strong>
+                    <span className="block">Online Structural Health Monitoring</span>
+                  </div>
+                </div>
+              </div>
               <a
                 href="https://www.facebook.com/share/1CWGyN1tJW/"
                 target="_blank"

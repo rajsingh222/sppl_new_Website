@@ -39,7 +39,7 @@ const TeamMembers = () => {
   const [step, setStep] = useState(304); // default fallback
   const [cardWidth, setCardWidth] = useState(320);
   const [gapPx, setGapPx] = useState(20);
-  const [columns, setColumns] = useState(3);
+  // columns state removed (was not used elsewhere); layout measured directly in effect
   const [isInstant, setIsInstant] = useState(false);
   const [paused, setPaused] = useState(false);
 
@@ -84,10 +84,9 @@ const TeamMembers = () => {
       const containerWidth = viewport.clientWidth;
       const isDesktop = window.innerWidth >= 1024;
       const isTablet = window.innerWidth >= 768;
-      const cols = isDesktop ? 3 : isTablet ? 2 : 1;
-      const gap = isDesktop ? 24 : isTablet ? 20 : 16;
+  const cols = isDesktop ? 3 : isTablet ? 2 : 1;
+  const gap = isDesktop ? 24 : isTablet ? 20 : 16;
       const width = Math.max(240, Math.floor((containerWidth - gap * (cols - 1)) / cols));
-      setColumns(cols);
       setGapPx(gap);
       setCardWidth(width);
       setStep(width + gap);

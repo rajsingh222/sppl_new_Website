@@ -5,20 +5,20 @@ const Hero = ({ isLoading }) => {
   const heroRef = useRef(null);
   const navigate = useNavigate();
   const [isVisible, setIsVisible] = useState(false);
-  const [videoReady, setVideoReady] = useState(false);
   const videoRef = useRef(null);
   const [avoidVideo, setAvoidVideo] = useState(false);
 
   useEffect(() => {
+    const node = heroRef.current;
     const observer = new window.IntersectionObserver(
       ([entry]) => {
         setIsVisible(entry.isIntersecting);
       },
       { threshold: 0.2 }
     );
-    if (heroRef.current) observer.observe(heroRef.current);
+    if (node) observer.observe(node);
     return () => {
-      if (heroRef.current) observer.unobserve(heroRef.current);
+      if (node) observer.unobserve(node);
     };
   }, []);
 
@@ -69,25 +69,8 @@ const Hero = ({ isLoading }) => {
     };
   }, [isVisible, avoidVideo]);
 
-  // Mark video ready once the browser can play; keep it visible afterwards
-  useEffect(() => {
-    const el = videoRef.current;
-    if (!el) return;
-
-    const onPlaying = () => setVideoReady(true);
-    const onCanPlay = () => setVideoReady(true);
-    const onCanPlayThrough = () => setVideoReady(true);
-
-    el.addEventListener('playing', onPlaying);
-    el.addEventListener('canplay', onCanPlay);
-    el.addEventListener('canplaythrough', onCanPlayThrough);
-
-    return () => {
-      el.removeEventListener('playing', onPlaying);
-      el.removeEventListener('canplay', onCanPlay);
-      el.removeEventListener('canplaythrough', onCanPlayThrough);
-    };
-  }, []);
+  // NOTE: removed videoReady state and listeners (was unused). Video play/pause is controlled
+  // by visibility and user preferences instead.
 
   const messages = [
     { heading: 'We Offer', sub: 'Affordable and Sustainable Structural Health Monitoring' },
@@ -101,14 +84,33 @@ const Hero = ({ isLoading }) => {
 
   useEffect(() => {
     if (isLoading) return;
+
+    let intervalId = null;
+    let localTimeout = null;
+
+    // Ensure the first message is shown immediately after loading
     setVisible(true);
-    const fadeOutTimer = setTimeout(() => setVisible(false), 2600);
-    const nextTimer = setTimeout(() => setIndex((prev) => (prev + 1) % messages.length), 3200);
-    return () => {
-      clearTimeout(fadeOutTimer);
-      clearTimeout(nextTimer);
+
+    const cycleOnce = () => {
+      // Fade out, then advance index, then fade back in
+      setVisible(false);
+      localTimeout = setTimeout(() => {
+        setIndex((prev) => (prev + 1) % messages.length);
+        setVisible(true);
+      }, 600); // match the transition duration for smoothness
     };
-  }, [index, isLoading]);
+
+    // Start a repeating cycle: show each message for ~3200ms
+    intervalId = setInterval(cycleOnce, 3200);
+
+    // Also run one cycle after initial show so the first transition happens
+    localTimeout = setTimeout(cycleOnce, 3200);
+
+    return () => {
+      if (intervalId) clearInterval(intervalId);
+      if (localTimeout) clearTimeout(localTimeout);
+    };
+  }, [isLoading, messages.length]);
 
   return (
     <section

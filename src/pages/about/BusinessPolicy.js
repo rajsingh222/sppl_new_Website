@@ -23,11 +23,11 @@ export default function BusinessPolicy() {
           <div className="max-w-5xl mx-auto px-6 text-gray-800">
             <div className="bg-white/70 backdrop-blur-sm shadow-sm rounded-2xl p-6 md:p-10">
               <div className="prose max-w-none prose-slate">
-                <p className="text-gray-700 leading-relaxed">
-                  At Sanrachna Prahari Pvt. Ltd. (SPPL), our business policy is built on ethics, innovation and a commitment to delivering high-quality structural health monitoring (SHM) solutions. We follow clear principles that guide every aspect of our work, ensuring transparency, accountability and long-term trust with clients, partners and employees.
+                <p className="text-gray-700 leading-relaxed text-justify">
+                  At Sanrachna Prahari Pvt Ltd (SPPL), our business policy is built on ethics, innovation and a commitment to delivering high-quality structural health monitoring (SHM) solutions. We follow clear principles that guide every aspect of our work, ensuring transparency, accountability and long-term trust with clients, partners and employees.
                 </p>
 
-                <div className="mt-8 space-y-6">
+                <div className="mt-8 space-y-6 text-justify">
                   {/* Quality and Innovation */}
                   <div className="flex items-start gap-4">
                     <div className="h-9 w-9 rounded-md bg-sky-50 ring-1 ring-sky-200 flex items-center justify-center text-sky-600 shrink-0">
@@ -37,7 +37,7 @@ export default function BusinessPolicy() {
                     </div>
                     <div>
                       <h3 className="text-xl font-semibold text-gray-900">Quality and Innovation</h3>
-                      <p className="mt-2 text-gray-700">We deliver SHM products, services and training that meet global standards while addressing India’s unique infrastructure needs. Our R&amp;D team drives continuous innovation, ensuring every solution is thoroughly tested, safe and reliable.</p>
+                      <p className="mt-2 text-gray-700 text-justify">We deliver SHM products, services and training that meet global standards while addressing India’s unique infrastructure needs. Our R&amp;D team drives continuous innovation, ensuring every solution is thoroughly tested, safe and reliable.</p>
                     </div>
                   </div>
 
@@ -64,7 +64,7 @@ export default function BusinessPolicy() {
                     </div>
                     <div>
                       <h3 className="text-xl font-semibold text-gray-900">Ethical Business Conduct</h3>
-                      <p className="mt-2 text-gray-700">We uphold integrity in all dealings. SPPL rejects corruption and unethical practices while ensuring confidentiality, honesty and compliance with all regulations.</p>
+                      <p className="mt-2 text-gray-700 text-justify">We uphold integrity in all dealings. SPPL rejects corruption and unethical practices while ensuring confidentiality, honesty and compliance with all regulations.</p>
                     </div>
                   </div>
 

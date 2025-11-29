@@ -14,7 +14,7 @@ export default function Navbar() {
 
   // Derive active item from current path to avoid initial flicker
   const deriveActive = (path) => {
-    if (path === '/products') return 'products';
+    if (path === '/myproducts') return 'products';
     if (path === '/projects') return 'projects';
     if (path === '/blogs') return 'blogs';
     if (path === '/dashboard') return 'dashboard';
@@ -83,6 +83,7 @@ export default function Navbar() {
       { label: 'About SPPL', to: '/about' },
       { label: 'Vision and Mission', to: '/about/vision-mission' },
       { label: 'Our Scope', to: '/about/scope' },
+      { label: 'Partnerships', to: '/about/partnership' },
       { label: 'Innovation & Research', to: '/about/innovation-research' },
       { label: 'Training & Consultation', to: '/about/training-consultation' },
       // { label: 'Process Features', to: '/about/process-features' },
@@ -106,7 +107,7 @@ export default function Navbar() {
       { label: 'Prestressed Structures', to: '/solutions/prestressed', icon: 'bolt' },
       { label: 'Electric Power & Communication', to: '/solutions/electric', icon: 'power' },
     ]},
-    { label: 'Products', to: '/products' },
+  { label: 'Products', to: '/myproducts' },
     { label: 'Projects', to: '/projects' },
     { label: 'Blogs', to: '/blogs' },
     { label: 'Dashboard', to: '/dashboard' },
@@ -121,14 +122,34 @@ export default function Navbar() {
   const flatNavForSearch = navItems.flatMap(item =>
     item.dropdown ? [item, ...item.dropdown.map(d => ({ ...d, isChild: true, parent: item.label }))] : [item]
   );
-
-  const filtered = query
-    ? flatNavForSearch.filter(i => i.label.toLowerCase().includes(query.toLowerCase()))
+  // Normalize strings for better matching (handles symbols like '&' and extra spaces)
+  const norm = (s = '') => s.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, ' ').trim();
+  const enrichedSearchPool = flatNavForSearch.map(i => ({
+    ...i,
+    searchText: norm((i.parent ? i.parent + ' ' : '') + (i.label || '') + ' ' + (i.to || '')),
+  }));
+  const q = norm(query);
+  const qTerms = q ? q.split(' ').filter(Boolean) : [];
+  const filtered = qTerms.length
+    ? enrichedSearchPool.filter(i => qTerms.every(t => i.searchText.includes(t)))
     : [];
+
+  // Helper to set active item by path
+  const setActiveByPath = (path) => {
+    if (path === '/') return setActiveItem('home');
+    if (path.startsWith('/about')) return setActiveItem('about');
+    if (path.startsWith('/business-verticals')) return setActiveItem('business verticals');
+    if (path.startsWith('/solutions')) return setActiveItem('solutions');
+    if (path.startsWith('/contact')) return setActiveItem('contact');
+    if (path === '/myproducts') return setActiveItem('products');
+    if (path === '/projects') return setActiveItem('projects');
+    if (path === '/blogs') return setActiveItem('blogs');
+    if (path === '/dashboard') return setActiveItem('dashboard');
+  };
 
   return (
     <nav
-      className="fixed left-0 right-0 z-[90] bg-white h-20 border-b border-gray-100 shadow-sm "
+      className={`fixed left-0 right-0 z-[90] h-20 ${isScrolled ? 'backdrop-blur-sm bg-white/95 shadow-md border-b border-gray-100' : 'bg-white border-b border-gray-100 shadow-sm'}`}
       style={{ top: 'var(--topbar-offset)' }} // pushes down when TopInfoBar is visible
     >
   <div className="w-full px-4 sm:px-6">
@@ -153,7 +174,7 @@ export default function Navbar() {
             />
             <div className="text-left">
               <div className="text-3xl font-bold text-sppl-blue leading-tight">SPPL India</div>
-              <div className="text-base text-red-800">An IIT Delhi Company</div>
+              <div className="text-base text-red-800 font-bold">An IIT Delhi Company</div>
             </div>
           </Link>
 
@@ -164,14 +185,14 @@ export default function Navbar() {
               {navItems.map(item => (
                 <div key={item.label} className={`relative group`}>
                   <Link
-                    to={(item.to === '/products' && location.search.includes('section=')) ? `/products${location.search}` : item.to}
+                    to={item.to}
                     className={`nav-link-compact px-3 text-gray-800 ${item.dropdown ? 'pr-8' : ''} ${
                       (activeItem === 'home' && item.to === '/') ||
                       (activeItem === 'about' && item.to === '/about') ||
                       (activeItem === 'business verticals' && item.to.startsWith('/business-verticals')) ||
                       (activeItem === 'solutions' && item.to.startsWith('/solutions')) ||
                       (activeItem === 'contact' && item.to.startsWith('/contact')) ||
-                      (activeItem === 'products' && item.to === '/products') ||
+                      (activeItem === 'products' && item.to === '/myproducts') ||
                       (activeItem === 'projects' && item.to === '/projects')
                       || (activeItem === 'blogs' && item.to === '/blogs')
                       || (activeItem === 'dashboard' && item.to === '/dashboard')
@@ -217,7 +238,7 @@ export default function Navbar() {
                       if (item.to.startsWith('/business-verticals')) {
                         setActiveItem('business verticals');
                       }
-                      if (item.to === '/products') setActiveItem('products');
+                      if (item.to === '/myproducts') setActiveItem('products');
                       if (item.to === '/projects') setActiveItem('projects');
                       if (item.to === '/dashboard') setActiveItem('dashboard');
                       if (item.to === '/blogs') setActiveItem('blogs');
@@ -228,7 +249,7 @@ export default function Navbar() {
                       (activeItem === 'business verticals' && item.to.startsWith('/business-verticals')) ||
                       (activeItem === 'solutions' && item.to.startsWith('/solutions')) ||
                       (activeItem === 'contact' && item.to.startsWith('/contact')) ||
-                      (activeItem === 'products' && item.to === '/products') ||
+                      (activeItem === 'products' && item.to === '/myproducts') ||
                       (activeItem === 'projects' && item.to === '/projects')
                       || (activeItem === 'blogs' && item.to === '/blogs')
                       || (activeItem === 'dashboard' && item.to === '/dashboard')
@@ -334,9 +355,28 @@ export default function Navbar() {
                         {filtered.map(res => (
                           <Link
                             key={(res.parent ? res.parent + '-' : '') + res.label}
-                            to={res.to}
+                            to={res.to || '#'}
                             className="dropdown-item"
-                            onClick={() => { setIsSearchOpen(false); setQuery(''); }}
+                            onClick={(e) => {
+                              e.preventDefault();
+                              setIsSearchOpen(false);
+                              setQuery('');
+                              // Special cases
+                              if (res.label === 'Dashboard' && DASHBOARD_URL) {
+                                window.location.href = DASHBOARD_URL;
+                                return;
+                              }
+                              // Contact root is not directly navigated in top nav; default to client page
+                              const target = res.to === '/contact' ? '/contact/client' : (res.to || '/');
+                              if (target === '/') {
+                                if (location.pathname !== '/') navigate('/');
+                                window.scrollTo({ top: 0, behavior: 'auto' });
+                                setActiveItem('home');
+                                return;
+                              }
+                              setActiveByPath(target);
+                              navigate(target);
+                            }}
                           >
                             {res.parent && <span className="text-gray-400 mr-2">{res.parent} ›</span>}
                             {res.label}
@@ -396,7 +436,7 @@ export default function Navbar() {
                       (activeItem === 'business verticals' && item.to.startsWith('/business-verticals')) ||
                       (activeItem === 'solutions' && item.to.startsWith('/solutions')) ||
                       (activeItem === 'contact' && item.to.startsWith('/contact')) ||
-                      (activeItem === 'products' && item.to === '/products') ||
+                      (activeItem === 'products' && item.to === '/myproducts') ||
                       (activeItem === 'projects' && item.to === '/projects') ||
                       (activeItem === 'blogs' && item.to === '/blogs') ||
                       (activeItem === 'dashboard' && item.to === '/dashboard')
@@ -428,7 +468,7 @@ export default function Navbar() {
                       if (item.to.startsWith('/contact')) setActiveItem('contact');
                       if (item.to.startsWith('/business-verticals')) setActiveItem('business verticals');
                       if (item.to.startsWith('/solutions')) setActiveItem('solutions');
-                      if (item.to === '/products') setActiveItem('products');
+                      if (item.to === '/myproducts') setActiveItem('products');
                       if (item.to === '/projects') setActiveItem('projects');
                       if (item.to === '/blogs') setActiveItem('blogs');
                       if (item.to === '/dashboard') setActiveItem('dashboard');
